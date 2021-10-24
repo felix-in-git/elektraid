@@ -8,12 +8,16 @@ import ListContacts from './ListContacts';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {consoleDev, postAPI, getAPI, putAPI} from '../function/api/api';
 import PhotoPicker from '../components/photoPicker';
-import {RED, WHITE} from '../constant/colors';
+import {RED, WHITE, CAROUSEL_BACKGROUND, BUTTON} from '../constant/colors';
 import SimplePhotoBase64 from '../components/simplePhotoBase64';
 import {GET_ONE_CONTACT, SEND_ONE_CONTACT, UPDATE_ONE_CONTACT, GET_ALL_CONTACT} from '../constant/apiUrl';
 import {useRoute} from '@react-navigation/native';
+import {LOGO, ARROW_LEFT} from '../assets/icons/indexIcons';
+import Header from '../components/header';
+import {StackActions} from '@react-navigation/routers';
 
-const size = Dimensions.get('window').width;
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default class AddContact extends React.Component {
   constructor(props) {
@@ -115,54 +119,76 @@ export default class AddContact extends React.Component {
         style={{
           flex: 1,
           flexDirection: 'column',
-          backgroundColor: WHITE,
+          backgroundColor: CAROUSEL_BACKGROUND,
+          width: windowWidth,
+          height: windowHeight,
         }}>
+        <Header mainLogo={LOGO} logoLeft={ARROW_LEFT} onPressLeft={() => this.props.navigation.goBack()} />
         <View
           style={{
-            flex: 1.3,
-            marginTop: 30,
+            flex: 1,
+            margin: 40,
+            borderRadius: 20,
             justifyContent: 'center',
             alignItems: 'center',
+            backgroundColor: WHITE,
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 1,
+            },
+            shadowOpacity: 0.2,
+            shadowRadius: 1.41,
+
+            elevation: 2,
           }}>
-          <View>
-            <TouchableOpacity onPress={() => this.launchImageLibrarys()} style={{flex: 1, margin: 5}}>
-              <SimplePhotoBase64 url={this.state.base64} widths={200} heights={200} />
-            </TouchableOpacity>
+          <View
+            style={{
+              flex: 1.3,
+              marginTop: 30,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <View>
+              <TouchableOpacity onPress={() => this.launchImageLibrarys()} style={{flex: 1, margin: 5}}>
+                <SimplePhotoBase64 url={this.state.base64} widths={200} heights={200} />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View style={{flex: 2, margin: 30}}>
-          <Text></Text>
-          <TextInputSimple
-            onChangeText={value => {
-              this.setState({
-                firstName: value,
-              });
-            }}
-            inputValue={this.state.firstName}
-            inputPlaceholder={FIRST_NAME}
-          />
+          <View style={{flex: 2, margin: 30, width: '80%'}}>
+            <Text></Text>
+            <TextInputSimple
+              onChangeText={value => {
+                this.setState({
+                  firstName: value,
+                });
+              }}
+              inputValue={this.state.firstName}
+              inputPlaceholder={FIRST_NAME}
+            />
 
-          <TextInputSimple
-            onChangeText={value => {
-              this.setState({
-                lastName: value,
-              });
-            }}
-            inputValue={this.state.lastName}
-            inputPlaceholder={LAST_NAME}
-          />
+            <TextInputSimple
+              onChangeText={value => {
+                this.setState({
+                  lastName: value,
+                });
+              }}
+              inputValue={this.state.lastName}
+              inputPlaceholder={LAST_NAME}
+            />
 
-          <TextInputSimple
-            onChangeText={value => {
-              this.setState({
-                age: value,
-              });
-            }}
-            inputValue={this.state.age}
-            inputPlaceholder={AGE}
-            keyboardType={'numeric'}
-          />
-          <Button title="Submit" onPress={() => this.validation()} />
+            <TextInputSimple
+              onChangeText={value => {
+                this.setState({
+                  age: value,
+                });
+              }}
+              inputValue={this.state.age}
+              inputPlaceholder={AGE}
+              keyboardType={'numeric'}
+            />
+            <Button title="Submit" color={BUTTON} onPress={() => this.validation()} />
+          </View>
         </View>
       </View>
     );

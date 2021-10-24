@@ -18,8 +18,23 @@ export default class ListContacts extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.willFocusSubscription();
+  }
+
   componentDidMount() {
+    consoleDev('masuk list contact');
     this.getContactList();
+    this.willFocusSubscription = this.props.navigation.addListener('willFocus', () => {
+      this.getContactList();
+    });
+
+    const {navigation} = this.props;
+    navigation.addListener('willFocus', () => {
+      this.getContactList();
+    });
+
+    // this.getContactList();
   }
 
   getContactList() {

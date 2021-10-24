@@ -56,22 +56,19 @@ export default function TextInputSimple(props) {
   }
 
   return (
-
-      <TextInput
-        style={{
-          height: 40,
-          marginBottom: 10,    
-          borderWidth: 1,
-          padding: 10,
-          borderColor: INPUT_TEXT_GREY,
-          borderWidth: 1
-        }}
-        placeholder={inputPlaceholder}
-        onChangeText={onChangeText}
-        value={inputValue}
-        keyboardType={keyboardType}
-        
-      />
-
+    <TextInput
+      style={{
+        height: 40,
+        marginBottom: 10,
+        borderWidth: 1,
+        padding: 10,
+        borderColor: INPUT_TEXT_GREY,
+        borderWidth: 1,
+      }}
+      placeholder={inputPlaceholder}
+      onChangeText={onChangeText}
+      value={inputValue}
+      keyboardType={keyboardType}
+    />
   );
 }
