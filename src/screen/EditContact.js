@@ -90,6 +90,8 @@ export default class AddContact extends React.Component {
 
     putAPI(UPDATE_ONE_CONTACT + '/' + this.state.id, request).then(response => {
       Alert.alert(response.message);
+    }).then(()=>{
+      this.props.navigation.goBack()
     });
   }
 

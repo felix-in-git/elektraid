@@ -7,12 +7,12 @@ import {DELETE_ONE_CONTACT, GET_ALL_CONTACT} from '../constant/apiUrl';
 import {CAROUSEL_BACKGROUND, WHITE} from '../constant/colors';
 import {consoleDev, deleteAPI, getAPI} from '../function/api/api';
 
-
 export default class ListContacts extends React.Component {
   constructor() {
     super();
     this.state = {
       listContact: [],
+      isFetching: false,
     };
   }
 
@@ -30,19 +30,30 @@ export default class ListContacts extends React.Component {
     // this.getContactList();
   }
 
+  onRefresh() {
+    this.setState({isFetching: true}, () => {
+      this.getContactList();
+    });
+  }
+
   getContactList() {
     consoleDev('masuk use effect');
     getAPI(GET_ALL_CONTACT).then(response => {
       this.setState({
         listContact: JSON.parse(JSON.stringify(response.data)),
+        isFetching: false,
       });
     });
   }
 
   deleteOneContact(ID) {
-    deleteAPI(DELETE_ONE_CONTACT + '/' + ID).then(response => {
-      Alert.alert(response.message);
-    });
+    deleteAPI(DELETE_ONE_CONTACT + '/' + ID)
+      .then(response => {
+        Alert.alert(response.message);
+      })
+      .then(() => {
+        this.getContactList();
+      });
   }
 
   render() {
@@ -55,6 +66,8 @@ export default class ListContacts extends React.Component {
           data={this.state.listContact}
           pagingEnabled={true}
           horizontal={true}
+          onRefresh={() => this.onRefresh()}
+          refreshing={this.state.isFetching}
           renderItem={({item}) => (
             <View
               style={{

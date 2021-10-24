@@ -66,6 +66,8 @@ export default class AddContact extends React.Component {
 
     postAPI(CREATE_ONE_CONTACT, request).then(response => {
       Alert.alert(response.message);
+    }).then(()=>{
+      this.props.navigation.goBack()
     });
   }
 
