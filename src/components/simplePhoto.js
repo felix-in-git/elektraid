@@ -8,8 +8,8 @@ SimplePhoto.defaultProps = {
   containerPointerEvens: null,
   onStartShouldSetResponder: null,
   url: null,
-  widths: 50,
-  heights: 50,
+  widths: 60,
+  heights: 60,
 };
 
 SimplePhoto.propTypes = {

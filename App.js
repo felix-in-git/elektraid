@@ -12,17 +12,15 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="ListContacts" component={ListContacts} />
-          <Stack.Screen name="EditContact" component={EditContact} />
-          <Stack.Screen name="AddContact" component={AddContact} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    
-  )
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="ListContacts">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="ListContacts" component={ListContacts} />
+        <Stack.Screen name="EditContact" component={EditContact} />
+        <Stack.Screen name="AddContact" component={AddContact} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 export default App;
