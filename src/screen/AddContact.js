@@ -8,7 +8,7 @@ import ListContacts from './ListContacts';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {consoleDev, postAPI} from '../function/api/api';
 import PhotoPicker from '../components/photoPicker';
-import {RED} from '../constant/colors';
+import {RED, WHITE} from '../constant/colors';
 import SimplePhotoBase64 from '../components/simplePhotoBase64';
 import {SEND_ONE_CONTACT, CREATE_ONE_CONTACT} from '../constant/apiUrl';
 
@@ -89,6 +89,7 @@ export default class AddContact extends React.Component {
         style={{
           flex: 1,
           flexDirection: 'column',
+          backgroundColor: WHITE,
         }}>
         <View
           style={{

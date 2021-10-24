@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {ActivityIndicator, Image, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {consoleDev} from '../function/api/api';
+import {CARD_BACKGROUND, WHITE} from '../constant/colors';
+import {ICON_PROFILE} from '../assets/icons/indexIcons';
 
 SimplePhoto.defaultProps = {
   containerStyle: {},
@@ -22,7 +24,7 @@ SimplePhoto.propTypes = {
 };
 
 export default function SimplePhoto(props) {
-  const {containerStyle, containerPointerEvens,widths,  heights} = props;
+  const {containerStyle, containerPointerEvens, widths, heights} = props;
   const {url} = props;
 
   let loading = true;
@@ -34,9 +36,9 @@ export default function SimplePhoto(props) {
 
   function checkImageNull(input) {
     if (input && input != 'N/A') {
-      return input;
+      return {uri: input};
     } else {
-      return 'https://reactnative.dev/img/tiny_logo.png';
+      return ICON_PROFILE;
     }
   }
 
@@ -55,10 +57,10 @@ export default function SimplePhoto(props) {
         style={{
           width: widths,
           height: heights,
-          borderRadius:5
+          borderRadius: 15,
         }}
         onLoadEnd={onLoadEnd()}
-        source={{uri: checkImageNull(url)}}
+        source={checkImageNull(url)}
         onError={() => onErrorImage()}
       />
       <ActivityIndicator

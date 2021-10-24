@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {ActivityIndicator, Image, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {consoleDev} from '../function/api/api';
+import {CARD_BACKGROUND} from '../constant/colors';
+import {ICON_PROFILE} from '../assets/icons/indexIcons';
 
 SimplePhotoBase64.defaultProps = {
   containerStyle: {},
@@ -33,19 +35,19 @@ export default function SimplePhotoBase64(props) {
   }
 
   function checkImageNull(input) {
-    consoleDev("masuk image")
-    consoleDev(input.substring(0, 21))
+    consoleDev('masuk image');
+    consoleDev(input.substring(0, 21));
     if (input && input != 'N/A') {
-      if (input.substring(0, 21) == 'data:image/png;base64' || input.substring(0,23) == 'data:image/jpeg;base64,') {
+      if (input.substring(0, 21) == 'data:image/png;base64' || input.substring(0, 23) == 'data:image/jpeg;base64,') {
         consoleDev('base64');
-        return input;
+        return {uri: input};
       } else if (input.substring(0, 4) == 'http') {
-        return input;
+        return {uri: input};
       } else {
-        return 'data:image/jpeg;base64,' + input;
+        return {uri: 'data:image/jpeg;base64,' + input};
       }
     } else {
-      return 'https://reactnative.dev/img/tiny_logo.png';
+      return ICON_PROFILE;
     }
   }
 
@@ -64,10 +66,10 @@ export default function SimplePhotoBase64(props) {
         style={{
           width: widths,
           height: heights,
-          borderRadius: 5,
+          borderRadius: 15,
         }}
         onLoadEnd={onLoadEnd()}
-        source={{uri: checkImageNull(url)}}
+        source={checkImageNull(url)}
         onError={() => onErrorImage()}
       />
       <ActivityIndicator

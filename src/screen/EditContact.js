@@ -8,7 +8,7 @@ import ListContacts from './ListContacts';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {consoleDev, postAPI, getAPI, putAPI} from '../function/api/api';
 import PhotoPicker from '../components/photoPicker';
-import {RED} from '../constant/colors';
+import {RED, WHITE} from '../constant/colors';
 import SimplePhotoBase64 from '../components/simplePhotoBase64';
 import {GET_ONE_CONTACT, SEND_ONE_CONTACT, UPDATE_ONE_CONTACT, GET_ALL_CONTACT} from '../constant/apiUrl';
 import {useRoute} from '@react-navigation/native';
@@ -81,7 +81,7 @@ export default class AddContact extends React.Component {
       });
     });
   }
-  
+
   sentNewContact() {
     let request = {
       firstName: this.state.firstName,
@@ -115,6 +115,7 @@ export default class AddContact extends React.Component {
         style={{
           flex: 1,
           flexDirection: 'column',
+          backgroundColor: WHITE,
         }}>
         <View
           style={{

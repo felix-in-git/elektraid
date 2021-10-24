@@ -17,6 +17,7 @@ TextView.defaultProps = {
   textLabel: null,
   textStyle: {},
   textFontAlign: 'left',
+  fontStyle: 'normal',
 };
 
 TextView.propTypes = {
@@ -27,10 +28,11 @@ TextView.propTypes = {
   widths: PropTypes.any,
   heights: PropTypes.any,
   onChangeText: PropTypes.any,
+  fontStyle: PropTypes.any,
 };
 
 export default function TextView(props) {
-  const {textColor, textSize, textFont, textFontWeight, textFontAlign, textLines} = props;
+  const {textColor, textSize, textFont, textFontWeight, textFontAlign, textLines, fontStyle} = props;
   const {textLabel} = props;
   const {textStyle} = props;
 
@@ -45,6 +47,7 @@ export default function TextView(props) {
     fontWeight: textFontWeight,
     backgroundColor: 'transparent',
     textAlign: textFontAlign,
+    fontStyle: fontStyle,
   });
   textStyles.push(textStyle);
 
