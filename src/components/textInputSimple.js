@@ -36,24 +36,6 @@ export default function TextInputSimple(props) {
   const {inputPlaceholder, inputValue, widths, heights, keyboardType} = props;
   const {onChangeText} = props;
 
-  let loading = true;
-  let error = false;
-
-  function onLoadEnd() {
-    loading = false;
-  }
-
-  function checkImageNull(input) {
-    if (input && input != 'N/A') {
-      return input;
-    } else {
-      return 'https://reactnative.dev/img/tiny_logo.png';
-    }
-  }
-
-  function onErrorImage() {
-    error = true;
-  }
 
   return (
     <TextInput

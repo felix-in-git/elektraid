@@ -2,7 +2,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { Button, SafeAreaView, Text, View } from "react-native";
-import AddContact from "./src/screen/AddContact";
+import {LoadingScreen} from './src/components';
+import AddContact from './src/screen/AddContact';
 import CarouselContacts from './src/screen/CarouselContacts';
 import EditContact from './src/screen/EditContact';
 import Home from './src/screen/Home';
@@ -12,6 +13,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   return (
+    // <View>
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="CarouselContacts"
@@ -24,7 +26,10 @@ function App() {
         <Stack.Screen name="AddContact" component={AddContact} />
         <Stack.Screen name="CarouselContacts" component={CarouselContacts} />
       </Stack.Navigator>
+      <LoadingScreen />
     </NavigationContainer>
+
+    // </View>
   );
 }
 

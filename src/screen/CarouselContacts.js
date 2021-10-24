@@ -9,6 +9,7 @@ import EditContact from './EditContact';
 import {ICON_ADD, ICON_EDIT, ICON_DELETE, LOGO, MENU} from '../assets/icons/indexIcons';
 import VerticalCardContacts from '../components/verticalCardContact';
 import Header from '../components/header';
+import {LoadingScreen} from '../components';
 
 export default class ListContacts extends React.Component {
   constructor() {
@@ -68,7 +69,7 @@ export default class ListContacts extends React.Component {
                 photo={item.photo}
                 firstName={item.firstName}
                 lastName={item.lastName}
-                age={item.age}
+                age={item.age.toString()}
                 onPressedEdit={() => {
                   this.props.navigation.navigate('EditContact', {
                     itemId: item.id,

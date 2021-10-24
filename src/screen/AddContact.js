@@ -16,7 +16,7 @@ import Header from '../components/header';
 import CarouselContacts from './CarouselContacts';
 import {StackActions} from '@react-navigation/routers';
 
-const size = Dimensions.get('window').width;
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
