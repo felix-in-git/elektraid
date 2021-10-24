@@ -1,15 +1,12 @@
 import React from 'react';
-import {TouchableOpacity, FlatList, Text, View, Alert, Image, Dimensions} from 'react-native';
-import HorizontalCardContact from '../components/horizontalCardContact';
-
-import {DELETE_ONE_CONTACT, GET_ALL_CONTACT, UPDATE_ONE_CONTACT} from '../constant/apiUrl';
-import {CARD_BACKGROUND, GREEN, RED, WHITE, CAROUSEL_BACKGROUND} from '../constant/colors';
-import {consoleDev, deleteAPI, getAPI, putAPI} from '../function/api/api';
-import EditContact from './EditContact';
-import {ICON_ADD, ICON_EDIT, ICON_DELETE, LOGO, MENU} from '../assets/icons/indexIcons';
-import VerticalCardContacts from '../components/verticalCardContact';
+import {Alert, Dimensions, FlatList, Image, TouchableOpacity, View} from 'react-native';
+import {ICON_ADD, LOGO, MENU} from '../assets/icons/indexIcons';
 import Header from '../components/header';
-import {LoadingScreen} from '../components';
+import VerticalCardContacts from '../components/verticalCardContact';
+import {DELETE_ONE_CONTACT, GET_ALL_CONTACT} from '../constant/apiUrl';
+import {CAROUSEL_BACKGROUND, WHITE} from '../constant/colors';
+import {consoleDev, deleteAPI, getAPI} from '../function/api/api';
+
 
 export default class ListContacts extends React.Component {
   constructor() {

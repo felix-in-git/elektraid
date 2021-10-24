@@ -1,20 +1,14 @@
 import React from 'react';
-import {Button, View, Text, Dimensions, Image, TouchableOpacity, Alert} from 'react-native';
-import {createStackNavigator} from 'react-navigation';
-import SimplePhoto from '../components/simplePhoto';
-import TextInputSimple from '../components/textInputSimple';
-import {AGE, ERROR_IMAGE_EMPTY, ERROR_LENGTH_AGE, ERROR_LENGTH_FIRST_NAME, ERROR_LENGTH_LAST_NAME, FIRST_NAME, LAST_NAME} from '../lang/en';
-import ListContacts from './ListContacts';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {consoleDev, postAPI} from '../function/api/api';
-import PhotoPicker from '../components/photoPicker';
-import {BUTTON, CAROUSEL_BACKGROUND, GREEN, RED, WHITE} from '../constant/colors';
-import SimplePhotoBase64 from '../components/simplePhotoBase64';
-import {SEND_ONE_CONTACT, CREATE_ONE_CONTACT} from '../constant/apiUrl';
-import {LOGO, CAROUSEL, ARROW_LEFT} from '../assets/icons/indexIcons';
+import {Alert, Button, Dimensions, TouchableOpacity, View} from 'react-native';
+import {launchImageLibrary} from 'react-native-image-picker';
+import {ARROW_LEFT, LOGO} from '../assets/icons/indexIcons';
 import Header from '../components/header';
-import CarouselContacts from './CarouselContacts';
-import {StackActions} from '@react-navigation/routers';
+import SimplePhotoBase64 from '../components/simplePhotoBase64';
+import TextInputSimple from '../components/textInputSimple';
+import {CREATE_ONE_CONTACT} from '../constant/apiUrl';
+import {BUTTON, CAROUSEL_BACKGROUND, WHITE} from '../constant/colors';
+import {consoleDev, postAPI} from '../function/api/api';
+import {AGE, ERROR_IMAGE_EMPTY, ERROR_LENGTH_AGE, ERROR_LENGTH_FIRST_NAME, ERROR_LENGTH_LAST_NAME, FIRST_NAME, LAST_NAME} from '../lang/en';
 
 
 const windowWidth = Dimensions.get('window').width;

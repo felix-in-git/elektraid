@@ -1,7 +1,5 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
-import ListContacts from './ListContacts';
+import {Button, Text, View} from 'react-native';
 
 export default class Home extends React.Component {
   render() {
