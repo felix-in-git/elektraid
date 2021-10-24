@@ -76,7 +76,7 @@ export default function VerticalCardContacts(props) {
         <View style={{flex: 2, justifyContent: 'center', alignItems: 'center', marginBottom: -20}}>
           <TextView textLabel={firstName + ', ' + lastName} textSize={40} fontStyle={'italic'} />
           <View style={{margin: 10}} />
-          <TextView textLabel={age + YEARS_OLD} />
+          <TextView textLabel={age + YEARS_OLD} textSize={20} />
         </View>
         <View
           style={{

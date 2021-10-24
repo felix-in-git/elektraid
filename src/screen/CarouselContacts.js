@@ -3,11 +3,12 @@ import {TouchableOpacity, FlatList, Text, View, Alert, Image, Dimensions} from '
 import HorizontalCardContact from '../components/horizontalCardContact';
 
 import {DELETE_ONE_CONTACT, GET_ALL_CONTACT, UPDATE_ONE_CONTACT} from '../constant/apiUrl';
-import {CARD_BACKGROUND, RED, WHITE} from '../constant/colors';
+import {CARD_BACKGROUND, GREEN, RED, WHITE, CAROUSEL_BACKGROUND} from '../constant/colors';
 import {consoleDev, deleteAPI, getAPI, putAPI} from '../function/api/api';
 import EditContact from './EditContact';
-import {ICON_ADD} from '../assets/icons/indexIcons';
+import {ICON_ADD, ICON_EDIT, ICON_DELETE, LOGO, MENU} from '../assets/icons/indexIcons';
 import VerticalCardContacts from '../components/verticalCardContact';
+import Header from '../components/header';
 
 export default class ListContacts extends React.Component {
   constructor() {
@@ -39,14 +40,10 @@ export default class ListContacts extends React.Component {
   render() {
     return (
       <View style={{flex: 1, backgroundColor: WHITE}}>
+        {/* <Header mainText={'hehehehe'} /> */}
+        <Header mainLogo={LOGO} logoRight={MENU} onPressRight={() => this.props.navigation.navigate('ListContacts')} />
         <FlatList
-          //   style={{
-          //     marginTop: 10,
-          //     flex: 1,
-          //     backgroundColor: WHITE,
-          //     zIndex: -1,
-          //   }}
-          style={{flex: 1}}
+          style={{flex: 1, backgroundColor: CAROUSEL_BACKGROUND}}
           data={this.state.listContact}
           pagingEnabled={true}
           horizontal={true}

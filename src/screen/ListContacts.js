@@ -3,10 +3,12 @@ import {TouchableOpacity, FlatList, Text, View, Alert, Image, Dimensions} from '
 import HorizontalCardContact from '../components/horizontalCardContact';
 
 import {DELETE_ONE_CONTACT, GET_ALL_CONTACT, UPDATE_ONE_CONTACT} from '../constant/apiUrl';
-import {CARD_BACKGROUND, RED, WHITE} from '../constant/colors';
+import {CARD_BACKGROUND, RED, WHITE, CAROUSEL_BACKGROUND} from '../constant/colors';
 import {consoleDev, deleteAPI, getAPI, putAPI} from '../function/api/api';
 import EditContact from './EditContact';
-import {ICON_ADD} from '../assets/icons/indexIcons';
+import {ICON_ADD, LOGO, MENU, CAROUSEL, ARROW_LEFT} from '../assets/icons/indexIcons';
+import Header from '../components/header';
+import CarouselContacts from './CarouselContacts';
 
 export default class ListContacts extends React.Component {
   constructor() {
@@ -38,18 +40,24 @@ export default class ListContacts extends React.Component {
   render() {
     return (
       <View style={{flex: 1, backgroundColor: WHITE}}>
+        <Header
+          mainLogo={LOGO}
+          logoRight={CAROUSEL}
+          onPressRight={() => this.props.navigation.goBack()}
+          logoLeft={ARROW_LEFT}
+          onPressLeft={() => this.props.navigation.goBack()}
+        />
         <FlatList
           style={{
-            marginTop: 10,
+            paddingTop: 10,
             flex: 1,
-            backgroundColor: WHITE,
+            backgroundColor: CAROUSEL_BACKGROUND,
             zIndex: -1,
           }}
           data={this.state.listContact}
           renderItem={({item}) => (
             <View
               style={{
-                // backgroundColor: 'white',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>

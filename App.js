@@ -13,7 +13,11 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CarouselContacts">
+      <Stack.Navigator
+        initialRouteName="CarouselContacts"
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="ListContacts" component={ListContacts} />
         <Stack.Screen name="EditContact" component={EditContact} />
